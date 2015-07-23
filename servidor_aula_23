@@ -1,0 +1,11 @@
+require 'socket'
+
+serverSocket = TCPServer.new(2000)
+puts 'servidor iniciado'
+loop {
+	clientSocket = serverSocket.accept
+	msgcliente = clientSocket.gets #simula uma operação demoradacomo a gravação do disco
+	sleep (2); #dorme 2 segundos
+	clientSocket.puts('ok')
+	clientSocket.close
+}
